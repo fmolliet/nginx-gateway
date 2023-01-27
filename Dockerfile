@@ -7,5 +7,7 @@ FROM nginx:alpine-slim
 #RUN echo "load_module /opt/opentelemetry-webserver-sdk/WebServerModule/Nginx/1.23.1/ngx_http_opentelemetry_module.so;\n$(cat /etc/nginx/nginx.conf)" > /etc/nginx/nginx.conf
 #COPY opentelemetry_module.conf /etc/nginx/conf.d
 COPY default.conf /etc/nginx/conf.d/default.conf
+COPY localhost.crt /etc/nginx/localhost.crt
+COPY localhost.key /etc/nginx/localhost.key
 COPY nginx.conf /etc/nginx/nginx.conf
 RUN nginx -t
